@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './req/listData.dart';
+import './iconfont.dart'; // 引入自定义的icon
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text("我 Flutter 打钱！")),
-        body: MyCom(),
+        body: MyList(),
       ),
     );
   }
@@ -41,25 +41,5 @@ class MyList extends StatelessWidget {
     return ListView(
       children: _initListData(),
     );
-  }
-}
-
-class MyCom extends StatelessWidget {
-  const MyCom({super.key});
-  List<Widget> _initListData() {
-    List<Widget> tempList = [];
-    for (var i = 0; i < listData.length; i++) {
-      tempList.add(ListTile(
-        leading: Image.network("${listData[i]["url"]}"),
-        title: Text("${listData[i]["title"]}"),
-        subtitle: Text("${listData[i]["description"]}"),
-      ));
-    }
-    return tempList;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(children: _initListData());
   }
 }
