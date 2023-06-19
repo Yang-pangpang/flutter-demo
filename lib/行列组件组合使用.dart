@@ -115,7 +115,7 @@ class MyCom2 extends StatelessWidget {
                           Icons.abc,
                           color: Colors.green,
                         ),
-                        flex: 2,
+                        flex: 1,
                       ),
                       SizedBox(
                         height: 5,
