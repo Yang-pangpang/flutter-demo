@@ -89,20 +89,20 @@ class MyCom2 extends StatelessWidget {
           color: Colors.purpleAccent,
         ),
         SizedBox(
-          height: 10,
+          height: 5,
         ),
         Row(
           children: [
             Expanded(
               flex: 2,
               child: SizedBox(
-                // sizeBox用来设置高度，否则会出现错位的情况
-                child: IconContainer(Icons.home_max_outlined),
                 height: 150,
+                // sizeBox用来设置高度，否则会出现错位的情况
+                child: IconContainer(
+                  Icons.home_max_outlined,
+                  color: Colors.blueAccent,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 5,
             ),
             Expanded(
                 flex: 1,
@@ -115,7 +115,7 @@ class MyCom2 extends StatelessWidget {
                           Icons.abc,
                           color: Colors.green,
                         ),
-                        flex: 1,
+                        flex: 2,
                       ),
                       SizedBox(
                         height: 5,
@@ -148,7 +148,7 @@ class IconContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      width: 150,
+      width: 120,
       height: 150,
       // decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
       color: color,

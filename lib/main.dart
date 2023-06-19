@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(title: Text("我 Flutter 打钱！")),
-        body: MyCom2(),
+        body: MyCom3(),
       ),
     );
   }
@@ -30,133 +30,175 @@ class MyCom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flex(
-      direction: Axis.horizontal, // 横轴
-      // direction: Axis.vertical, // 纵轴排列
-      children: [
-        Expanded(
-          child: IconContainer(
-            Icons.home, // 用了flex：1,之后，设置这个元素的宽度是没有效果的
-          ),
-          flex: 1,
-        ),
-        Expanded(
-          child: IconContainer(
-            Icons.abc,
-            color: Colors.purple,
-          ),
-          flex: 3,
-        )
-      ],
+    return Container(
+      height: 300,
+      width: 300,
+      color: Colors.purple,
+      child: Stack(
+        children: [
+          Positioned(
+              // position组件基于父组件定位，如果写在最外层，则基于屏幕定位，需要定位的元素，使用positation组件包裹即可
+              left: 10,
+              bottom: 10,
+              child: Container(
+                height: 200,
+                width: 200,
+                color: Colors.green,
+              )),
+          Positioned(right: 0, top: 150, child: Text('我是Flutter')),
+        ],
+      ),
     );
   }
 }
 
-// 右侧固定宽度，左侧自适应宽度布局
 class MyCom1 extends StatelessWidget {
   const MyCom1({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    final size =
+        MediaQuery.of(context).size; // 获取屏幕大小，如果没有定义，则使用MediaQuery对象的size属性
+    return Stack(
       children: [
-        Expanded(
-          child: IconContainer(
-            Icons.home, // 用了flex：1,之后，设置这个元素的宽度是没有效果的
-          ),
-          flex: 1,
+        ListView(
+          padding: EdgeInsets.only(top: 50),
+          children: [
+            ListTile(
+              title: Text("我是一个文字组件-----1"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----2"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----3"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----4"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----5"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----6"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----7"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----8"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----9"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----10"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----11"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----12"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----13"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----14"),
+            ),
+            ListTile(
+              title: Text("我是一个文字组件-----15"),
+            )
+          ],
         ),
-        IconContainer(
-          Icons.abc,
-          color: Colors.purple,
-        ),
+        Positioned(
+            right: 0,
+            top: 200,
+            width: size.width, // position里面配置的宽高是子组件的宽高，不是position本身的宽高
+            // width:double.infinity, // 在position组件中，不支持这个无限宽度，会报错
+            child: Row(
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 44,
+                      color: Colors.green,
+                      child: Text("二级标题", style: TextStyle(color: Colors.red)),
+                    ))
+              ],
+            ))
       ],
     );
   }
 }
 
-// 行列结合布局
+// Align属性
 class MyCom2 extends StatelessWidget {
   const MyCom2({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Container(
-          width: double.infinity,
-          height: 150,
-          color: Colors.purpleAccent,
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: SizedBox(
-                height: 150,
-                // sizeBox用来设置高度，否则会出现错位的情况
-                child: IconContainer(
-                  Icons.home_max_outlined,
-                  color: Colors.blueAccent,
-                ),
-              ),
-            ),
-            Expanded(
-                flex: 1,
-                child: SizedBox(
-                  height: 150,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: IconContainer(
-                          Icons.abc,
-                          color: Colors.green,
-                        ),
-                        flex: 2,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Expanded(
-                        child: IconContainer(
-                          Icons.abc,
-                          color: Colors.pink,
-                        ),
-                        flex: 1,
-                      )
-                    ],
-                  ),
-                )),
-          ],
-        )
-      ],
+    return Container(
+      width: 200,
+      height: 200,
+      decoration: BoxDecoration(
+          color: Colors.purple.shade600,
+          borderRadius: BorderRadius.circular(24)),
+      child: Align(
+        alignment: Alignment(-0.5, 0.5), // 坐标，可以定位元素的位置
+        child: Text("Flutter"),
+      ),
     );
   }
 }
 
-// 自定义Icon区块
-// ignore: must_be_immutable
-class IconContainer extends StatelessWidget {
-  Color color;
-  IconData icon;
-  IconContainer(this.icon, {super.key, this.color = Colors.red});
+// Stack和Align结合使用
+class MyCom3 extends StatelessWidget {
+  const MyCom3({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      width: 120,
-      height: 150,
-      // decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-      color: color,
-      child: Icon(
-        icon,
-        color: Colors.white,
-        size: 28,
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          height: 40,
+          child: Stack(
+            // 如果这里使用Row组件的话，alignment属性没用
+            children: [
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text("我的"),
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Text("你的"),
+              ),
+            ],
+          ),
+        ),
+        // position和Stack结合使用
+        SizedBox(
+          width: double.infinity,
+          height: 40,
+          child: Stack(
+            // 使用Stack组件，要么在根组件使用，要么外层必须有一个父元素，且有宽高，sizeBox和Container都可以，不能单独使用，否则会报错
+
+            // 如果这里使用Row组件的话，alignment属性没用
+            children: [
+              Positioned(
+                left: 10,
+                child: Text("我的"),
+              ),
+              Positioned(
+                right: 10,
+                child: Text("你的"),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
