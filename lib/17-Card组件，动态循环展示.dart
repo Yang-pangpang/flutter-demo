@@ -146,7 +146,7 @@ class LayoutCom2 extends StatelessWidget {
     var list = listData.map((item) {
       return Card(
         margin: EdgeInsets.all(10),
-        elevation: 20,
+        elevation: 50,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Column(
           children: [
