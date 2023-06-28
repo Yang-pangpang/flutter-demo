@@ -29,26 +29,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> _list = []; // 数据源
-  onPressed() {
-    // 改变数据必须使用setState
-    setState(() {
-      _list.add("this is add new List");
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("实现动态列表")),
-      floatingActionButton: FloatingActionButton(
-        onPressed: onPressed,
-        child: Icon(Icons.add),
-      ),
-      body: ListView(
-          children: _list.map((e) {
-        return ListTile(title: Text(e));
-      }).toList()),
+      appBar: AppBar(title: const Text("实现底部导航栏")),
+      body: Text('底部导航栏'),
+      bottomNavigationBar: BottomNavigationBar(
+          fixedColor: Colors.green,
+          currentIndex: 0, // 默认选中的菜单
+          onTap: (index) {
+            // 菜单点击事件
+            print(index);
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.catching_pokemon), label: "分类"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "购物车"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "我的"),
+          ]),
     );
   }
 }
