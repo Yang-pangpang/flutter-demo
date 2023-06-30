@@ -31,7 +31,86 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("实现底部导航栏")),
+      appBar: AppBar(title: const Text("配置菜单栏")),
+      // drawer : 左侧菜单栏
+      drawer: Drawer(
+        child: Column(children: [
+          Row(
+            children: [
+              Expanded(
+                  flex: 1,
+                  child:
+                      // DrawerHeader是自定义抽屉头部，里面的东西都需要自己配置（样式不固定），
+                      // DrawerHeader(
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.purple,
+                      //         image: DecorationImage(
+                      //             image: NetworkImage(
+                      //                 "https://cdn.pixabay.com/photo/2023/05/28/00/34/sunset-8022573_1280.jpg"),
+                      //             fit: BoxFit.cover)),
+                      //     child: Column(
+                      //       children: [
+                      //         ListTile(
+                      //           leading: CircleAvatar(
+                      //             backgroundImage: NetworkImage(
+                      //                 "https://cdn.pixabay.com/photo/2023/06/01/06/22/british-shorthair-8032816_1280.jpg"),
+                      //           ),
+                      //           title: Text(
+                      //             "我是菜单栏第一个",
+                      //             style: TextStyle(color: Colors.white),
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     )),
+                      // 头部组件，只需要配置内容即可(样式固定)
+                      UserAccountsDrawerHeader(
+                    accountName: Text("Yonga"), // 用户名
+                    accountEmail: Text("yga****@gmail.com"), // 邮箱
+                    // 当前用户头像
+                    currentAccountPicture: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://cdn.pixabay.com/photo/2023/06/01/06/22/british-shorthair-8032816_1280.jpg"),
+                    ),
+                    // 其他账户头像
+                    otherAccountsPictures: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://cdn.pixabay.com/photo/2023/02/10/14/09/dandelion-7780950_1280.jpg"),
+                      ),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            "https://cdn.pixabay.com/photo/2023/04/26/15/51/lighthouse-7952696_1280.jpg"),
+                      )
+                    ],
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "https://cdn.pixabay.com/photo/2023/05/28/00/34/sunset-8022573_1280.jpg"))),
+                  ))
+            ],
+          ),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.apple)),
+            title: Text("我是菜单栏第一个"),
+          ),
+          Divider(
+            color: Colors.pink,
+          ),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.apple)),
+            title: Text("我是菜单栏第一个"),
+          ),
+          Divider(),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.apple)),
+            title: Text("我是菜单栏第一个"),
+          ),
+          Divider(),
+        ]),
+      ),
+      // endDrawer : 右侧菜单栏
+      endDrawer: Drawer(child: Text("右侧菜单栏")),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           fixedColor: Colors.deepPurple.shade300, // 选中的颜色
