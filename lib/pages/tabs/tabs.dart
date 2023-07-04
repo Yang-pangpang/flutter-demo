@@ -91,20 +91,20 @@ class _TabsState extends State<Tabs> {
             ],
           ),
           ListTile(
-            leading: CircleAvatar(child: Icon(Icons.apple)),
-            title: Text("我是菜单栏第一个"),
+            leading: CircleAvatar(child: Icon(Icons.person)),
+            title: Text("个人中心"),
           ),
           Divider(
             color: Colors.pink,
           ),
           ListTile(
-            leading: CircleAvatar(child: Icon(Icons.apple)),
-            title: Text("我是菜单栏第一个"),
+            leading: CircleAvatar(child: Icon(Icons.settings)),
+            title: Text("设置"),
           ),
           Divider(),
           ListTile(
-            leading: CircleAvatar(child: Icon(Icons.apple)),
-            title: Text("我是菜单栏第一个"),
+            leading: CircleAvatar(child: Icon(Icons.wallet)),
+            title: Text("钱包"),
           ),
           Divider(),
         ]),
