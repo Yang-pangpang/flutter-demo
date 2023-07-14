@@ -109,8 +109,6 @@ class _TabsState extends State<Tabs> {
           Divider(),
         ]),
       ),
-      // endDrawer : 右侧菜单栏
-      endDrawer: Drawer(child: Text("右侧菜单栏")),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           fixedColor: Colors.deepPurple.shade300, // 选中的颜色
